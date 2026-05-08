@@ -56,6 +56,9 @@ async function getPuppy(id) {
   }
 }
 
+//help, my friend said "if anyone gave that pseudocode to me to review id think they were insane"
+//im standing my ground ദ്ദി ༎ຶ‿༎ຶ )
+
 //define an asyncronous function named addPuppy that takes a puppy object as input
 //implement try/catch to execute the code block and catch possible errors instead of crashing
 //send a POST request using fetch to the players endpoint with the puppy data
@@ -67,7 +70,6 @@ async function getPuppy(id) {
 //wait for puppy list to get reloaded from the API
 //catch any error within the try block
 //log the error in the console
-
 async function addPuppy(puppy) {
   try {
     const response = await fetch(API + "/players", {
@@ -98,6 +100,25 @@ async function removePuppy(id) {
     });
     selectedPuppy = null;
     await getPuppies();
+  } catch (woof) {
+    console.error(woof);
+  }
+}
+
+//oh god it looks like im writing an essay
+//IM SORRY ILL STOP
+
+//define an asyncronous function named getTeams
+//send a GET request using fetch to the teams and await the response
+//parse the response as JSON and await the result
+//reassign teams to the array of teams from the API responses
+//re render the page
+async function getTeams() {
+  try {
+    const response = await fetch(API + "/teams");
+    const result = await response.json();
+    teams = result.data.teams;
+    render();
   } catch (woof) {
     console.error(woof);
   }
