@@ -93,7 +93,7 @@ async function addPuppy(puppy) {
 //wait for puppy list to get reloaded from API
 async function removePuppy(id) {
   try {
-    await fetch(API + "/player/" + id, {
+    await fetch(API + "/players/" + id, {
       method: "DELETE",
     });
     selectedPuppy = null;
