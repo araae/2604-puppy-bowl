@@ -123,3 +123,80 @@ async function getTeams() {
     console.error(woof);
   }
 }
+
+// === Components ===
+
+//define a function named PuppyListItem that takes a puppy object as input
+//create a new list document element ($li)
+//write an if statement to check if this puppy is currently selected and add selected if true
+//using innerHTML set a link to the puppys name
+//add a click event listener that gets the puppys details using an arrow function/callback
+//return the list document element
+function PuppyListItem(puppy) {
+  const $li = document.createElement("li");
+
+  if (puppy.id === selectedPuppy?.id) {
+    $li.classList.add("selected");
+  }
+
+  $li.innerHTML = `
+    <a href="#selected">${puppy.name}</a>
+    `;
+  $li.addEventListener("click", () => getPuppy(puppy.id));
+  return $li;
+}
+
+//define a function named PuppyList
+//create a new unordered document list element ($ul)
+//add the puppies class to the list for styling in css
+//create a PuppyListItem for each puppy by using map to create a new array
+//replace the children of $ul with the array of PuppyListItems
+//return the unordered list element
+function PuppyList() {
+  const ul = document.createElement("ul");
+  ul.classList.add("puppies");
+
+  const puppyItems = puppies.map(PuppyListItem);
+  ul.replaceChildren(...puppyItems);
+
+  return ul;
+}
+//i removed $ for this block, i'm still not sure if i like it with or without
+//i'll be more consistent in the future
+
+//define a function named SelectedPuppy
+//if no puppy is selected, create a paragraph(p) that asks user to select one and return it
+function SelectedPuppy() {
+  if (!selectedPuppy) {
+    const p = document.createElement("p");
+    p.textContent = "Please select a puppy to learn more.";
+    return p;
+  }
+
+  //find the team that this puppy belongs to
+  //if no team was found, default to unassigned
+  //create a new element called section that holds the puppys details
+  //show the name, id, image,breed,status,team and a remove button using innerHTML
+  //add a button and a click event listener that removes puppy using its id
+  //return the section element
+  const team = teams.find((t) => t.id === selectedPuppy.teamId);
+  const teamName = team ? team.name : "Unassigned";
+  const puppy = document.createElement("section");
+  puppy.innerHTML = `
+    <h3>${selectedPuppy.name} #${selectedPuppy.id}</h3>
+    <figure>
+      <img alt="${selectedPuppy.name}" src="${selectedPuppy.imageUrl}" />
+    </figure>
+    <p><strong>Breed:</strong> ${selectedPuppy.breed}</p>
+    <p><strong>Status:</strong> ${selectedPuppy.status}</p>
+    <p><strong>Team:</strong> ${teamName}</p>
+    <button>Remove from roster</button>
+  `;
+
+  const button = puppy.querySelector("button");
+  button.addEventListener("click", () => {
+    removePuppy(selectedPuppy.id);
+  });
+
+  return puppy;
+}
