@@ -129,21 +129,24 @@ async function getTeams() {
 //define a function named PuppyListItem that takes a puppy object as input
 //create a new list document element ($li)
 //write an if statement to check if this puppy is currently selected and add selected if true
-//using innerHTML set a link to the puppys name
+//using innerHTML set a link to the puppys name and image
 //add a click event listener that gets the puppys details using an arrow function/callback
 //return the list document element
 function PuppyListItem(puppy) {
-  const $li = document.createElement("li");
+  const li = document.createElement("li");
 
   if (puppy.id === selectedPuppy?.id) {
-    $li.classList.add("selected");
+    li.classList.add("selected");
   }
 
-  $li.innerHTML = `
-    <a href="#selected">${puppy.name}</a>
+  li.innerHTML = `
+    <a href="#selected">
+      <img alt="${puppy.name}" src="${puppy.imageUrl}" />
+      ${puppy.name}
+    </a>
     `;
-  $li.addEventListener("click", () => getPuppy(puppy.id));
-  return $li;
+  li.addEventListener("click", () => getPuppy(puppy.id));
+  return li;
 }
 
 //define a function named PuppyList
