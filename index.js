@@ -200,3 +200,40 @@ function SelectedPuppy() {
 
   return puppy;
 }
+
+//define a function named NewPuppyForm
+//create a new form element to collect user input
+//set the innerHTML to include name, breed input, and a submit button
+//add a submit event listener to the form
+//add an event to prevent default page load behavior
+//using the data variable collect the formData
+//build a puppy object with name and breed from formData
+//send the new puppy to the API by using addPuppy
+//return the puppy form element
+
+function NewPuppyForm() {
+  const form = document.createElement("form");
+  form.innerHTML = `
+    <label>
+      Name
+      <input name="name" required />
+    </label>
+    <label>
+      Breed
+      <input name="breed" required />
+    </label>
+    <button>Add puppy</button>
+  `;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const puppy = {
+      name: data.get("name"),
+      breed: data.get("breed"),
+    };
+    addPuppy(puppy);
+  });
+
+  return form;
+}
