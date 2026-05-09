@@ -222,7 +222,6 @@ function NewPuppyForm() {
       Breed
       <input name="breed" required />
     </label>
-    <button>Add puppy</button>
   `;
 
   form.addEventListener("submit", (event) => {
