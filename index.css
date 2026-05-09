@@ -1,0 +1,101 @@
+.puppies img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 100px;
+  border: 0.2rem solid #ffffff;
+}
+
+body {
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 1rem;
+  background-color: #ffffff;
+}
+
+h1 {
+  text-align: center;
+  color: #d87117;
+  border-bottom: 0.4rem solid #222;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 3rem;
+  font-weight: bold;
+}
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+section {
+  border: 3px solid #00000022;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  background-color: #347ba8;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 0;
+  color: #ffffff;
+}
+
+.puppies {
+  list-style: none;
+  padding-left: 0;
+  columns: 2;
+  column-gap: 3rem;
+}
+
+.puppies a {
+  color: white;
+  text-decoration: none;
+}
+
+form label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+form input {
+  flex: 1;
+  padding: 0.25rem;
+  border: 1px solid #b5afaf;
+}
+
+form button {
+  display: block;
+  margin: 0.5rem auto;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  color: #2d2c2e;
+}
+
+#selected img {
+  width: 100%;
+  max-width: 20rem;
+  border-radius: 0.5rem;
+}
+
+#selected button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #2d2c2e;
+}
+
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  .puppies {
+    columns: 1;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
