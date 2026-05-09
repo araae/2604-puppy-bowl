@@ -237,3 +237,45 @@ function NewPuppyForm() {
 
   return form;
 }
+
+// === Render ===
+
+//define the render function that builds the UI
+//select the app element from the DOM
+//set the innerHTML with the page layout
+//replace all placeholder tags with the component output
+//define an asyncronous initialize function so that we can start the app
+//get all puppies from the API using await
+//get all teams from the API using await
+//render the page
+//initialize the app
+function render() {
+  const app = document.querySelector("#app");
+  app.innerHTML = `
+    <h1>Puppy Bowl</h1>
+    <main>
+      <section>
+        <h2>Listed Puppies</h2>
+        <PuppyList></PuppyList>
+        <h3>Add a new puppy</h3>
+        <NewPuppyForm></NewPuppyForm>
+      </section>
+      <section id="selected">
+        <h2>Puppy Details</h2>
+        <SelectedPuppy></SelectedPuppy>
+      </section>
+    </main>
+  `;
+
+  app.querySelector("PuppyList").replaceWith(PuppyList());
+  app.querySelector("NewPuppyForm").replaceWith(NewPuppyForm());
+  app.querySelector("SelectedPuppy").replaceWith(SelectedPuppy());
+}
+
+async function init() {
+  await getPuppies();
+  await getTeams();
+  render();
+}
+
+init();
